@@ -1,0 +1,14 @@
+#mainPopup {
+	padding: 10px;
+	height: 200px;
+	width: 400px;
+	font-family: Helvetica, Ubuntu, Arial, sans-serif;
+}
+h1 {
+	font-size: 2em;
+}
+
+.git-recommender-body {
+	font: 13px/1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"
+	color: #333;
+}

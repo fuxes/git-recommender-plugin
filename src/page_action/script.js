@@ -5,12 +5,14 @@ angular.module('gitRecommender', [])
 gitRecommenderCtrl.$inject = ['$scope', 'Recommendations'];
 
 function gitRecommenderCtrl($scope, Recommendations) {
-	$scope.recommendations = Recommendations.get();
+	Recommendations.get().then(function(data) {
+		$scope.recommendations = data;
+	});
 }
 
-Recommendations.$inject = ['$q'];
+Recommendations.$inject = ['$q', 'Git'];
 
-function Recommendations($q) {
+function Recommendations($q, Git) {
 	var service = {
 		get: getRecommendations
 	};
@@ -20,12 +22,11 @@ function Recommendations($q) {
 	//////////
 
 	function getRecommendations() {
-		// hit api
 		getCurrentTabUrl().then(function(url) {
 			console.log(url);
 		});
 
-		return [];
+		return Git.get();
 	}
 
 	function getCurrentTabUrl() {
