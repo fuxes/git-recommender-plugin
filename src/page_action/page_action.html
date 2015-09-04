@@ -2,25 +2,20 @@
 <html ng-app="gitRecommender" ng-csp="">
 	<head>
 		<link rel="stylesheet" href="/css/app.css"/>
-		<link rel="stylesheet" href="/libs/jstree.css"/>
+		<link rel="stylesheet" href="/libs/jstree/dist/themes/default/style.min.css"/>
+		<link rel="stylesheet" href="/libs/octicons/octicons.css"/>
 	</head>
 	<body ng-controller="gitRecommenderCtrl">
 		<div id="mainPopup">
-		<h1>Hello extensionizr!</h1>
-		<p>To shut this popup down, edit the manifest file and remove the "default popup" key. To edit it, just edit ext/page_action/page_action.html. The CSS is there, too.</p>
-		</div>
-
-		<div class="git-recommender-body">
-			<ul>
-				<li ng-repeat="item in recommendations">
-					{{item.name}} - {{item.type}}
-				</li>
-			</ul>
+			<h1>Hello git-recommender extension!</h1>
+			<div js-tree="treeConfig" ng-model="treeData"></div>
 		</div>
 
 		<script src="/libs/jquery.min.js"></script>
-		<script src="/js/angular/angular.js"></script>
+		<script src="/libs/angular.js"></script>
 		<script src="/libs/jstree.js"></script>
+		<script src="/libs/ngjstree.js"></script>
+
 		<script src="script.js"></script>
 		<script src="/js/data/git-data.js"></script>
 	</body>
