@@ -8,7 +8,8 @@
 	<body ng-controller="gitRecommenderCtrl">
 		<div id="mainPopup">
 			<h2>Hello git-recommender extension!</h2>
-			<div js-tree="treeConfig" ng-model="treeData"></div>
+			<div js-tree="treeConfig" ng-model="treeData"
+			tree-events="select_node:gotoNodeUrl"></div>
 		</div>
 
 		<script src="/libs/jquery.min.js"></script>

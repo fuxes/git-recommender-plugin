@@ -1,6 +1,11 @@
-//example of using a message handler from the inject scripts
-chrome.extension.onMessage.addListener(
-	function(request, sender, sendResponse) {
-		chrome.pageAction.show(sender.tab.id);
-		sendResponse();
+// Redirector
+chrome.extension.onMessage.addListener(function(req, sender) {
+	chrome.tabs.query({
+		currentWindow: true,
+		active: true
+	}, function(tabs) {
+		chrome.tabs.update(tabs[0].id, {
+			url: req.redirect
+		});
 	});
+});

@@ -4,6 +4,12 @@ angular.module('gitRecommender', ['ngJsTree'])
 gitRecommenderCtrl.$inject = ['$scope', 'Recommendations'];
 
 function gitRecommenderCtrl($scope, Recommendations) {
+
+    $scope.gotoNodeUrl = function(evt, data) {
+        var href = data.node.a_attr.href;
+        chrome.extension.sendMessage({redirect: href});
+    };
+
     $scope.treeConfig = {
         core: {
             multiple: false,
