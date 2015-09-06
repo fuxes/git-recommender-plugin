@@ -4,7 +4,6 @@ angular.module('gitRecommender', ['ngJsTree'])
 gitRecommenderCtrl.$inject = ['$scope', 'Recommendations'];
 
 function gitRecommenderCtrl($scope, Recommendations) {
-
     $scope.treeConfig = {
         core: {
             multiple: false,
@@ -32,10 +31,13 @@ function gitRecommenderCtrl($scope, Recommendations) {
 
     function parseGitFile(file) {
         var treeNode = {
-            id: file.name,
+            id: file.sha,
             text: file.name,
             type: file.type,
             parent: '#',
+            a_attr: {
+                href: file.html_url,
+            }
         };
 
         return treeNode;
