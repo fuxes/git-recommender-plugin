@@ -1,6 +1,9 @@
 (function() {
-    angular.module('gitRecommender')
-        .service('GitHub', GitDataService);
+    'use strict';
+
+    angular
+        .module('app')
+        .factory('GitHub', GitDataService);
 
     GitDataService.$inject = ['$http', '$q'];
 
@@ -20,6 +23,7 @@
             // return res.data;
             // })
 
+            // Mocked response
             var response = [{
                 "name": ".gitignore",
                 "path": ".gitignore",

@@ -1,64 +1,41 @@
 (function() {
-    angular.module('gitRecommender')
-        .controller('gitRecommenderCtrl', gitRecommenderCtrl);
+    'use strict';
 
-    gitRecommenderCtrl.$inject = ['$scope', 'Recommendations'];
+    angular
+        .module('app')
+        .controller('browserActionCtrl', browserActionCtrl);
 
-    function gitRecommenderCtrl($scope, Recommendations) {
+    browserActionCtrl.$inject = [
+        '$scope',
+        'RecommendationsTree'
+    ];
 
-        $scope.gotoNodeUrl = function(evt, data) {
-            var href = data.node.a_attr.href;
-            chrome.extension.sendMessage({
-                redirect: href
-            });
+    function browserActionCtrl($scope, RecommendationsTree) {
+        $scope.redirectNodeUrl = redirectNodeUrl;
+        $scope.tree = {
+            nodes: [],
+            config: RecommendationsTree.getConfig()
         };
 
-        $scope.treeConfig = {
-            core: {
-                multiple: false,
-                animation: true,
-                check_callback: true,
-                worker: true
-            },
-            types: {
-                default: {
-                    icon: 'octicon octicon-flame'
-                },
-                file: {
-                    icon: 'octicon octicon-file-text'
-                },
-                dir: {
-                    icon: 'octicon octicon-file-directory'
-                }
-            },
-            plugins: ['types', 'wholerow']
-        };
+        activate();
 
-        getTreeData().then(function(nodes) {
-            $scope.treeData = nodes;
-        });
+        //////////
 
-        function parseGitFile(file) {
-            var treeNode = {
-                id: file.sha,
-                text: file.name,
-                type: file.type,
-                parent: '#',
-                a_attr: {
-                    href: file.html_url,
-                }
-            };
-
-            return treeNode;
+        function activate() {
+            getRecomendationsTree();
         }
 
-        function getTreeData() {
-            return Recommendations.get().then(function(data) {
-                var nodes = [];
-                angular.forEach(data, function(item) {
-                    nodes.push(parseGitFile(item));
-                })
-                return nodes;
+        function getRecomendationsTree() {
+            RecommendationsTree.get().then(function(tree) {
+                $scope.tree.nodes = tree;
+            });
+        }
+
+        function redirectNodeUrl(evt, data) {
+            var href = data.node.a_attr.href;
+
+            chrome.extension.sendMessage({
+                redirect: href
             });
         }
     }

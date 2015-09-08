@@ -1,7 +1,8 @@
 (function() {
-    'use strict';
+	'use strict';
 
-    angular.module('gitRecommender', [
-        'ngJsTree'
-    ]);
+	angular
+		.module('app', [
+			'ngJsTree'
+		]);
 })();

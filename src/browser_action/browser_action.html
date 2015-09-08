@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html ng-app="gitRecommender" ng-csp="">
+<html ng-app="app" ng-csp="">
 	<head>
 		<link rel="stylesheet" href="/css/app.css"/>
 		<link rel="stylesheet" href="/libs/jstree/dist/themes/default/style.min.css"/>
 		<link rel="stylesheet" href="/libs/octicons/octicons.css"/>
 	</head>
-	<body ng-controller="gitRecommenderCtrl">
+	<body ng-controller="browserActionCtrl">
 		<div id="mainPopup">
 			<h2>Hello git-recommender extension!</h2>
-			<div js-tree="treeConfig" ng-model="treeData"
-			tree-events="select_node:gotoNodeUrl"></div>
+			<div js-tree="tree.config"
+			tree-events="select_node:gotoNodeUrl"
+			ng-model="tree.nodes"></div>
 		</div>
 
 		<script src="/libs/jquery.min.js"></script>
@@ -19,8 +20,8 @@
 
 		<script src="app.module.js"></script>
 		<script src="browser_action.js"></script>
-
-		<script src="/js/recommender.js"></script>
 		<script src="/js/data/github-data.js"></script>
+		<script src="/js/recommender.js"></script>
+		<script src="/js/recommendations-tree.js"></script>
 	</body>
 </html>

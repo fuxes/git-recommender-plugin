@@ -1,36 +1,41 @@
-angular.module('gitRecommender')
-    .service('Recommendations', Recommendations)
+(function() {
+    'use strict';
 
-Recommendations.$inject = ['$q', 'GitHub'];
+    angular
+        .module('app')
+        .factory('Recommendations', Recommendations);
 
-function Recommendations($q, GitHub) {
-    var service = {
-        get: getRecommendations
-    };
+    Recommendations.$inject = ['$q', 'GitHub'];
 
-    return service;
-
-    //////////
-
-    function getRecommendations() {
-        getCurrentTabUrl().then(function(url) {
-            console.log(url);
-        });
-
-        return GitHub.get();
-    }
-
-    function getCurrentTabUrl() {
-        var dfd = $q.defer();
-        var opts = {
-            currentWindow: true,
-            active: true
+    function Recommendations($q, GitHub) {
+        var service = {
+            get: getRecommendations
         };
 
-        chrome.tabs.query(opts, function(tabs) {
-            dfd.resolve(tabs[0].url);
-        });
+        return service;
 
-        return dfd.promise;
+        //////////
+
+        function getRecommendations() {
+            getCurrentTabUrl().then(function(url) {
+                console.log(url);
+            });
+
+            return GitHub.get();
+        }
+
+        function getCurrentTabUrl() {
+            var dfd = $q.defer();
+            var opts = {
+                currentWindow: true,
+                active: true
+            };
+
+            chrome.tabs.query(opts, function(tabs) {
+                dfd.resolve(tabs[0].url);
+            });
+
+            return dfd.promise;
+        }
     }
-}
+})();
