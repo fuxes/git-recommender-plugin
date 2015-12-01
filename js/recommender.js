@@ -19,8 +19,21 @@
         function getRecommendations() {
             return getCurrentTabUrl().then(function(url) {
                 var gitUrl = parseGitUrl(url);
-                return GitHub.getContents(gitUrl.username, gitUrl.repository, gitUrl.path);
+                return GitHub.getContents(gitUrl.username, gitUrl.repository, gitUrl.path)
+                    .then(function(contents) {
+                        var files = getContentsNames(contents);
+                        Recommender.get(url, files);
+                    });
             });
+
+
+            function getContentsNames(contents) {
+                return contents.filter(function(data) {
+                    return data.type === 'file';
+                }).map(function(data) {
+                    return data.name;
+                });
+            }
         }
 
         function getCurrentTabUrl() {
