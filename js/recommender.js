@@ -5,9 +5,9 @@
         .module('app')
         .factory('Recommendations', Recommendations);
 
-    Recommendations.$inject = ['$q', 'GitHub', 'Recommender'];
+    Recommendations.$inject = ['$q', '$rootScope', 'GitHub', 'Recommender'];
 
-    function Recommendations($q, GitHub, Recommender) {
+    function Recommendations($q, $rootScope, GitHub, Recommender) {
         var service = {
             get: getRecommendations
         };
@@ -17,36 +17,34 @@
         //////////
 
         function getRecommendations() {
-            return getCurrentTabUrl()
-                .then(function(url){
-                    return parseGitUrl(url);
-                })
-                .then(function(gitUrl){
-                    return GitHub.getContents(gitUrl.username, gitUrl.repository);
-                });
+            return getCurrentTabUrl().then(function(url) {
+                var gitUrl = parseGitUrl(url);
+                return GitHub.getContents(gitUrl.username, gitUrl.repository);
+            });
         }
 
         function getCurrentTabUrl() {
             var dfd = $q.defer();
-            var opts = {
+
+            chrome.tabs.query({
                 currentWindow: true,
                 active: true
-            };
-
-            chrome.tabs.query(opts, function(tabs) {
-                dfd.resolve(tabs[0].url);
+            }, function(tabs) {
+                $rootScope.$apply(function() {
+                    dfd.resolve(tabs[0].url);
+                });
             });
 
             return dfd.promise;
         }
 
-        function parseGitUrl(url){
+        function parseGitUrl(url) {
             var anchor = document.createElement('a'),
-            gitUrl,
-            match,
-            path,
-            repository,
-            username;
+                gitUrl,
+                match,
+                path,
+                repository,
+                username;
 
             anchor.href = url;
             path = trimSlash(anchor.pathname);
@@ -64,7 +62,7 @@
             return gitUrl;
         }
 
-        function trimSlash(path){
+        function trimSlash(path) {
             if (path.charAt(0) === '/') {
                 path = path.slice(1);
             }

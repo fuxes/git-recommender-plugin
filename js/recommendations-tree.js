@@ -45,7 +45,8 @@
 					'sort',
 					'types',
 					'wholerow'
-				]
+				],
+				version: 1
 			};
 
 			return config;

@@ -28,6 +28,7 @@
         function getRecomendationsTree() {
             RecommendationsTree.get().then(function(tree) {
                 $scope.tree.nodes = tree;
+                $scope.tree.config.version +=1;
             });
         }
 

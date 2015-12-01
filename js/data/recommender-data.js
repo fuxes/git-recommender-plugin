@@ -19,13 +19,13 @@
         function get(repository, files) {
             var data = {
                 "repository": "https://github.com/fatiherikli/fil.git",
-                "files" : [
+                "files": [
                     "master/examples/hello.py",
                     "gh-pages/index.html",
                     "master/images/logo.png",
                     "master/workers/opal.js"
-                    ]
-                };
+                ]
+            };
 
             return $http.post(baseurl, data).then(function(res) {
                 console.log(res.data);

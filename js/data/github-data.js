@@ -22,7 +22,7 @@
         function getContents(username, repository) {
             var url = baseUrl + reposSuffix + username + '/' + repository + contentsSuffix;
 
-            return $http.get(url).then(function(res){
+            return $http.get(url).then(function(res) {
                 return res.data;
             });
         }
