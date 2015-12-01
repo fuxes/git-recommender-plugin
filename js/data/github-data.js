@@ -19,8 +19,8 @@
 
         //////////
 
-        function getContents(username, repository) {
-            var url = baseUrl + reposSuffix + username + '/' + repository + contentsSuffix;
+        function getContents(username, repository, path) {
+            var url = baseUrl + reposSuffix + username + '/' + repository + contentsSuffix + path;
 
             return $http.get(url).then(function(res) {
                 return res.data;

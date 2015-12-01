@@ -19,7 +19,7 @@
         function getRecommendations() {
             return getCurrentTabUrl().then(function(url) {
                 var gitUrl = parseGitUrl(url);
-                return GitHub.getContents(gitUrl.username, gitUrl.repository);
+                return GitHub.getContents(gitUrl.username, gitUrl.repository, gitUrl.path);
             });
         }
 
@@ -48,15 +48,12 @@
 
             anchor.href = url;
             path = trimSlash(anchor.pathname);
-            /* @TODO: Update regex for getting path
-             * useful: http://stackoverflow.com/questions/16762847/
-             * /([^\/]+)\/([^\/]+)\/(?:([^\/]+))?/
-             */
-            match = path.match(/([^\/]+)\/([^\/]+)/);
+            match = path.match(/([^\/]+)\/([^\/]+)(?:\/(?:[^\/]+\/){2})?(.*)?/);
 
             gitUrl = {
                 username: match[1] || '',
-                repository: match[2] || ''
+                repository: match[2] || '',
+                path: match[3] || ''
             };
 
             return gitUrl;

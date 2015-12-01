@@ -40,9 +40,7 @@
 						icon: 'octicon octicon-file-directory'
 					}
 				},
-				// sort:
 				plugins: [
-					'sort',
 					'types',
 					'wholerow'
 				],
