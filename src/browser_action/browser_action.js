@@ -11,7 +11,7 @@
     ];
 
     function browserActionCtrl($scope, RecommendationsTree) {
-        $scope.redirectNodeUrl = redirectNodeUrl;
+        $scope.gotoNodeUrl = gotoNodeUrl;
         $scope.tree = {
             nodes: [],
             config: RecommendationsTree.getConfig()
@@ -31,7 +31,7 @@
             });
         }
 
-        function redirectNodeUrl(evt, data) {
+        function gotoNodeUrl(evt, data) {
             var href = data.node.a_attr.href;
 
             chrome.extension.sendMessage({

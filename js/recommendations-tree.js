@@ -17,14 +17,7 @@
 
 		function getTree() {
 			return Recommendations.get().then(function(data) {
-				var len = data.length,
-					nodes = [];
-
-				for (var i = 0; i < len; i++) {
-					nodes.push(createNode(data[i]));
-				}
-
-				return nodes;
+				return data.map(createNode);
 			});
 		}
 

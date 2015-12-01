@@ -7,7 +7,7 @@
 	</head>
 	<body ng-controller="browserActionCtrl">
 		<div id="mainPopup">
-			<h2>Hello git-recommender extension!</h2>
+			<h2>You should also check this files:</h2>
 			<div js-tree="tree.config"
 			tree-events="select_node:gotoNodeUrl"
 			ng-model="tree.nodes"></div>
@@ -21,6 +21,7 @@
 		<script src="app.module.js"></script>
 		<script src="browser_action.js"></script>
 		<script src="/js/data/github-data.js"></script>
+		<script src="/js/data/recommender-data.js"></script>
 		<script src="/js/recommender.js"></script>
 		<script src="/js/recommendations-tree.js"></script>
 	</body>
