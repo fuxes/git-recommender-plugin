@@ -34,6 +34,8 @@
                 $scope.tree.config.version += 1;
                 $scope.loading = false;
             }, function(err) {
+                $scope.error = 'Problem with the API';
+
                 if (typeof(err) === 'string')
                     $scope.error = err;
 
