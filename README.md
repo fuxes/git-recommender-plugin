@@ -26,5 +26,5 @@ Recommendations are based on the files that you see in the current folder (not s
 
 
 ## Errors
-**You are not in github!**: Your current active tab should be in a github.com repository.
+**You are not in github!**: Your current active tab should be in a github.com repository.  
 **Problem with the API**: There is a problem with the API Demo Server. Check if you have started the API server.
