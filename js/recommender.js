@@ -20,6 +20,8 @@
             return getCurrentTabUrl().then(function(url) {
                 var gitUrl = GitHub.parseGitUrl(url);
 
+                $rootScope.gitUrl = gitUrl;
+
                 if (gitUrl.error) {
                     return $q.reject(gitUrl.error);
                 }

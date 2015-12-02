@@ -8,12 +8,25 @@
 	</head>
 	<body ng-controller="browserActionCtrl">
 		<div id="mainPopup">
-			<h3>You should also check this <fieldset></fieldset></h3>
+			<h3>You should also check this files</h3>
+
+			<div class="well well-sm"
+			ng-show="$root.gitUrl && $root.gitUrl.username">
+				<div>
+					<strong>User:</strong> <samp ng-bind="$root.gitUrl.username"></samp>
+				</div>
+				<div>
+					<strong>Repository:</strong> <samp ng-bind="$root.gitUrl.repository"></samp>
+				</div>
+				<div ng-show="$root.gitUrl.path">
+					<strong>Path:</strong> <samp ng-bind="$root.gitUrl.path"></samp>
+				</div>
+			</div>
 
 			<div class="alert alert-danger"
 			ng-show="tree.nodes && !tree.nodes.length">
 				<p>Oops! There are no recommendations :(</p>
-				<p style="font-weight: bold;" ng-bind="error"></p>
+				<strong ng-bind="error"></strong>
 			</div>
 
 			<p ng-show="loading">Getting recommendations...</br>This can take some minutes.</p>
