@@ -41,7 +41,7 @@
                 return contents.filter(function(data) {
                     return data.type === 'file';
                 }).map(function(data) {
-                    return data.name;
+                    return data.path;
                 });
             }
         }

@@ -27,7 +27,7 @@
             var url = baseUrl + reposSuffix + username + '/' + repository + contentsSuffix + path;
 
             return $http.get(url).then(function(res) {
-                return res.data;
+                return [].concat(res.data);
             });
         }
 
