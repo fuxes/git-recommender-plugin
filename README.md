@@ -5,9 +5,9 @@ This is an Chrome extension for DrDub's Git Recommender project, you can check i
 ## Usage
 ### Loading the extension
 1. First start by cloning the repository `git clone https://github.com/fuxes/git-recommender-plugin.git`.
-2. Then in a new tab goto `chrome://extensions`.
+2. Then in a new tab go to `chrome://extensions`.
 3. In the upper right corner enable the developer mode.
-4. Hit `Load unpacked extension...` and look for the cloned folder.
+4. Hit the `Load unpacked extension...` button and look for the cloned folder.
 5. Close chrome (or chromium) and restart with the `--disable-web-security` argument [(more info)](http://stackoverflow.com/a/6083677)
 
 ### Run the API Demo Server
@@ -25,6 +25,6 @@ In order to work you need to run the API Demo Server from DrDub's Git Recommende
 Recommendations are based on the files that you see in the current folder (not subfolders). Since the API Demo Server downloads the repo and then compute it, it may take few minutes in answer back with the recommendations.
 
 
-## Errors
+## Errors and alerts
 **You are not in github!**: Your current active tab should be in a github.com repository.  
 **Problem with the API**: There is a problem with the API Demo Server. Check if you have started the API server.
