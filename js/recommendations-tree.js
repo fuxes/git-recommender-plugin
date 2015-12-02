@@ -52,17 +52,16 @@
 
 		function createNode(file) {
 			var node = {
-				id: file.sha,
-				text: file.name,
-				type: file.type,
+				id: file.sha || Math.random() * 100000,
+				text: file.name || file.file + '(' + file.score + ')' || '',
+				type: file.type || 'file',
 				parent: '#',
 				a_attr: {
-					href: file.html_url,
+					href: file.html_url || file.file,
 				}
 			};
 
 			return node;
 		}
 	}
-
 })();

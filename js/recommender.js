@@ -18,11 +18,12 @@
 
         function getRecommendations() {
             return getCurrentTabUrl().then(function(url) {
-                var gitUrl = parseGitUrl(url);
-                return GitHub.getContents(gitUrl.username, gitUrl.repository, gitUrl.path)
-                    .then(function(contents) {
+                var gitUrl = GitHub.parseGitUrl(url);
+
+                return GitHub.getContents(gitUrl.username, gitUrl.repository, gitUrl.path).then(function(contents) {
                         var files = getContentsNames(contents);
-                        Recommender.get(url, files);
+
+                        return Recommender.get(GitHub.getRepositoryUrl(url), files);
                     });
             });
 
@@ -49,34 +50,6 @@
             });
 
             return dfd.promise;
-        }
-
-        function parseGitUrl(url) {
-            var anchor = document.createElement('a'),
-                gitUrl,
-                match,
-                path,
-                repository,
-                username;
-
-            anchor.href = url;
-            path = trimSlash(anchor.pathname);
-            match = path.match(/([^\/]+)\/([^\/]+)(?:\/(?:[^\/]+\/){2})?(.*)?/);
-
-            gitUrl = {
-                username: match[1] || '',
-                repository: match[2] || '',
-                path: match[3] || ''
-            };
-
-            return gitUrl;
-        }
-
-        function trimSlash(path) {
-            if (path.charAt(0) === '/') {
-                path = path.slice(1);
-            }
-            return path;
         }
     }
 })();

@@ -12,24 +12,19 @@
             service = {
                 get: get
             };
+
         return service;
 
         //////////
 
-        function get(repository, files) {
+        function get(repositoryUrl, files) {
             var data = {
-                "repository": "https://github.com/fatiherikli/fil.git",
-                "files": [
-                    "master/examples/hello.py",
-                    "gh-pages/index.html",
-                    "master/images/logo.png",
-                    "master/workers/opal.js"
-                ]
+                repository: repositoryUrl,
+                files: files
             };
 
             return $http.post(baseurl, data).then(function(res) {
-                console.log(res.data);
-                return res.data;
+                return res.data.recommendation;
             });
         }
     }
