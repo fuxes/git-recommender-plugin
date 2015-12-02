@@ -11,12 +11,12 @@ This is an Chrome extension for DrDub's Git Recommender project, you can check i
 5. Close chrome (or chromium) and restart with the `--disable-web-security` argument [(more info)](http://stackoverflow.com/a/6083677)
 
 ### Run the API Demo Server
-6. In order to work you need to run the API Demo Server from DrDub's Git Recommender following the instructions [here](https://github.com/DrDub/gitrecommender/blob/master/README.md).
+In order to work you need to run the API Demo Server from DrDub's Git Recommender following the instructions [here](https://github.com/DrDub/gitrecommender/blob/master/README.md).
 
 ### Use the extension!
-7. Now go to any github reposity (i.e. https://github.com/apache/mahout)
-8. Click the github's octocat icon in the upper right corner of your browser.
-9. That's it! You should get some recommendations to check!
+1. Now go to any github reposity (i.e. https://github.com/apache/mahout)
+2. Click the github's octocat icon in the upper right corner of your browser.
+3. That's it! You should get some recommendations to check, you can click them to get see the files.
 
 <p align="center">
   <img src="http://i.imgur.com/4k9Au98.png" alt="Git Recommender Chrome Extension"/>
