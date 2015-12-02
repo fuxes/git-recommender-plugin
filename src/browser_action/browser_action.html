@@ -2,16 +2,19 @@
 <html ng-app="app" ng-csp="">
 	<head>
 		<link rel="stylesheet" href="/css/app.css"/>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
 		<link rel="stylesheet" href="/libs/jstree/dist/themes/default/style.min.css"/>
 		<link rel="stylesheet" href="/libs/octicons/octicons.css"/>
 	</head>
 	<body ng-controller="browserActionCtrl">
 		<div id="mainPopup">
-			<h2>You should also check this files:</h2>
+			<h3>You should also check this <fieldset></fieldset></h3>
 
-			<p ng-show="tree.nodes && !tree.nodes.length">Oops! There are no recommendations :(</p>
-
-			<p ng-bind="error"></p>
+		<div class="alert alert-danger"
+		ng-show="tree.nodes && !tree.nodes.length">
+			<p>Oops! There are no recommendations :(</p>
+			<p style="font-weight: bold;" ng-bind="error"></p>
+		</div>
 
 			<p ng-show="loading">Getting recommendations...</p>
 

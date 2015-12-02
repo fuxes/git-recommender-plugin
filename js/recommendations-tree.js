@@ -53,7 +53,7 @@
 		function createNode(file) {
 			var node = {
 				id: file.sha || Math.random() * 100000,
-				text: file.name || file.file + '(' + file.score + ')' || '',
+				text: file.name || file.file + createScoreBadge(file.score) || '',
 				type: file.type || 'file',
 				parent: '#',
 				a_attr: {
@@ -62,6 +62,10 @@
 			};
 
 			return node;
+		}
+
+		function createScoreBadge(score) {
+			return score ? '<span class="badge">' + score + '</span>' : '';
 		}
 	}
 })();
