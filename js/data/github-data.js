@@ -43,6 +43,12 @@
                 repository,
                 username;
 
+            if (!(/github.com/).test(url)) {
+                return {
+                    error: 'You are not in github!'
+                }
+            }
+
             anchor.href = url;
             path = trimSlash(anchor.pathname);
             match = path.match(/([^\/]+)\/([^\/]+)(?:\/(?:[^\/]+\/){2})?(.*)?/);

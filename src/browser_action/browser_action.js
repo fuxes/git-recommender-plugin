@@ -33,7 +33,10 @@
                 $scope.tree.nodes = tree;
                 $scope.tree.config.version += 1;
                 $scope.loading = false;
-            }, function() {
+            }, function(err) {
+                if (typeof(err) === 'string')
+                    $scope.error = err;
+
                 $scope.tree.nodes = [];
                 $scope.loading = false;
             });

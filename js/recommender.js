@@ -20,6 +20,10 @@
             return getCurrentTabUrl().then(function(url) {
                 var gitUrl = GitHub.parseGitUrl(url);
 
+                if (gitUrl.error){
+                    return $q.reject(gitUrl.error);
+                }
+
                 return GitHub.getContents(gitUrl.username, gitUrl.repository, gitUrl.path).then(function(contents) {
                         var files = getContentsNames(contents);
 

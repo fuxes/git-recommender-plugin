@@ -11,6 +11,8 @@
 
 			<p ng-show="tree.nodes && !tree.nodes.length">Oops! There are no recommendations :(</p>
 
+			<p ng-bind="error"></p>
+
 			<p ng-show="loading">Getting recommendations...</p>
 
 			<div js-tree="tree.config"
