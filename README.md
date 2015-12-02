@@ -1,6 +1,6 @@
 Git Recommender Extension
 ==========================
-This is an Chrome extension for DrDub's Git Recommender project, you can check it out here: `https://github.com/DrDub/gitrecommender`
+This is an Chrome extension for DrDub's Git Recommender project, you can check it out here: [https://github.com/DrDub/gitrecommender](https://github.com/DrDub/gitrecommender)
 
 ## Usage
 ### Loading the extension
