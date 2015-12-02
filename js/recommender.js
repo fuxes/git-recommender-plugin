@@ -20,15 +20,20 @@
             return getCurrentTabUrl().then(function(url) {
                 var gitUrl = GitHub.parseGitUrl(url);
 
-                if (gitUrl.error){
+                if (gitUrl.error) {
                     return $q.reject(gitUrl.error);
                 }
 
                 return GitHub.getContents(gitUrl.username, gitUrl.repository, gitUrl.path).then(function(contents) {
-                        var files = getContentsNames(contents);
+                    var files = getContentsNames(contents);
 
-                        return Recommender.get(GitHub.getRepositoryUrl(url), files);
+                    return Recommender.get(GitHub.getRepositoryUrl(url), files).then(function(files) {
+                        return files.map(function(file) {
+                            file.html_url = GitHub.getFileHtmlUrl(gitUrl, file);
+                            return file;
+                        });
                     });
+                });
             });
 
 

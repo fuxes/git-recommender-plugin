@@ -8,13 +8,15 @@
     GitDataService.$inject = ['$http', '$q'];
 
     function GitDataService($http, $q) {
-        var baseUrl = 'https://api.github.com',
+        var htmlUrl = 'https://github.com/',
+            baseUrl = 'https://api.github.com',
             reposSuffix = '/repos/',
             contentsSuffix = '/contents/',
             service = {
                 getContents: getContents,
                 getRepositoryUrl: getRepositoryUrl,
-                parseGitUrl: parseGitUrl
+                parseGitUrl: parseGitUrl,
+                getFileHtmlUrl: getFileHtmlUrl
             };
 
         return service;
@@ -46,7 +48,7 @@
             if (!(/github.com/).test(url)) {
                 return {
                     error: 'You are not in github!'
-                }
+                };
             }
 
             anchor.href = url;
@@ -61,13 +63,18 @@
             };
 
             return gitUrl;
+
+            function trimSlash(path) {
+                if (path.charAt(0) === '/') {
+                    path = path.slice(1);
+                }
+                return path;
+            }
         }
 
-        function trimSlash(path) {
-            if (path.charAt(0) === '/') {
-                path = path.slice(1);
-            }
-            return path;
+        function getFileHtmlUrl(gitUrl, file) {
+            return htmlUrl + gitUrl.username + '/' + gitUrl.repository + '/blob/master/' + file.file;
         }
+
     }
 })();
