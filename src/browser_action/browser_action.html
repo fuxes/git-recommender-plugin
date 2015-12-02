@@ -8,9 +8,15 @@
 	<body ng-controller="browserActionCtrl">
 		<div id="mainPopup">
 			<h2>You should also check this files:</h2>
+
+			<p ng-show="tree.nodes && !tree.nodes.length">Oops! There are no recommendations :(</p>
+
+			<p ng-show="loading">Getting recommendations...</p>
+
 			<div js-tree="tree.config"
 			tree-events="select_node:gotoNodeUrl"
 			ng-model="tree.nodes"></div>
+
 		</div>
 
 		<script src="/libs/jquery.min.js"></script>

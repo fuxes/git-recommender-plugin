@@ -1,8 +1,10 @@
 #mainPopup {
-	padding: 10px;
-	width: 400px;
+    padding: 0 5px;
+    margin-bottom: 20px;
+    min-width: 400px;
 	font-family: Helvetica, Ubuntu, Arial, sans-serif;
 }
+
 h1 {
 	font-size: 2em;
 }
@@ -16,4 +18,13 @@ h1 {
 
 a {
 	color: #4078c0;
+}
+/* Remove side */
+i.jstree-icon.jstree-ocl {
+    display: none;
+}
+
+.jstree-default .jstree-anchor {
+    color: #4078c0 !important;
+    font-size: 13px;
 }

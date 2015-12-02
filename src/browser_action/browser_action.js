@@ -11,9 +11,10 @@
     ];
 
     function browserActionCtrl($scope, RecommendationsTree) {
+        $scope.loading = false;
         $scope.gotoNodeUrl = gotoNodeUrl;
         $scope.tree = {
-            nodes: [],
+            nodes: false,
             config: RecommendationsTree.getConfig()
         };
 
@@ -26,9 +27,15 @@
         }
 
         function getRecomendationsTree() {
-            RecommendationsTree.get().then(function(tree) {
+            $scope.loading = true;
+
+            return RecommendationsTree.get().then(function(tree) {
                 $scope.tree.nodes = tree;
-                $scope.tree.config.version +=1;
+                $scope.tree.config.version += 1;
+                $scope.loading = false;
+            }, function() {
+                $scope.tree.nodes = [];
+                $scope.loading = false;
             });
         }
 
