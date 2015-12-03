@@ -23,15 +23,21 @@ Para poder ser utilizado por la extensión de Chrome, el profesor de la cátedra
 
 ###API Demo Server
 #### Get recommendations
+
+Name  | Type | Description
+------------- | -------------
+Content Cell  | Content Cell
+Content Cell  | Content Cell
+
 Obtener las recomendaciones propuestas para un listado de archivos.
 ```
 POST /recommend
 ```
-**Input**
-| Name| Type | Description |
-| :- | :- | :- |
-| `repository` | `string` | **Required.** The `clone_url` of the desired repository provided by github. |
-| `files`    | `array`   | **Required.** A list of file `paths` from the repository.|
+**Input**  
+| Name| Type | Description |  
+| :------ | :------ | :------ |  
+| `repository` | `string` | **Required.** The `clone_url` of the desired repository provided by github. |  
+| `files`    | `array`   | **Required.** A list of file `paths` from the repository.|  
 
 **Ejemplo**
 ```
@@ -77,6 +83,3 @@ Se
 
 #Propuesta para Git Recommender
 Después de utilizar la extensión de Chrome, se considera la siguiente modificación a la función que calcula la distancia entre archivos...
-
-
-
