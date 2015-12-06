@@ -43,7 +43,7 @@
                 return contents.filter(function(data) {
                     return data.type === 'file';
                 }).map(function(data) {
-                    return data.path;
+                    return "master/" + data.path;
                 });
             }
         }
